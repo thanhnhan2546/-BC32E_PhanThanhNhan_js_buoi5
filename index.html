@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <!-- Nav pills -->
+        <div class="col-md-2">
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="pill" href="#bai1"
+                >Bài 1</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#bai2">Bài 2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#bai3">Bài 3</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#bai4">Bài 4</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="col-md-10 py-3">
+          <div class="tab-content">
+            <div class="tab-pane container active" id="bai1">
+              <h1>Quản lý tuyển sinh</h1>
+              <div class="note">
+                <p>
+                  Đầu vào: <br />
+                  - Điểm chuẩn, Khu vực, Đối tượng và điểm 3 môn <br />
+                  <br />
+                  Xử lý: <br />
+                  - Tạo biến và gán đầu vào cho từng biến <br />
+                  - Tạo biến tongDiem và kqThi <br />
+                  - Nếu Khu vực là X thì điểm của Khu vực = 0 <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu Khu vực là A thì điểm của Khu vực
+                  = 2 <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu Khu vực là B thì điểm của Khu vực
+                  = 1 <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu Khu vực là C thì điểm của Khu vực
+                  = 0.5 <br />
+                  - Nếu Đối tượng là 0 thì điểm của Đối tượng = 0 <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu Đối tượng là 1 thì điểm của Đối
+                  tượng = 2.5 <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu Đối tượng là 2 thì điểm của Đối
+                  tượng = 1.5 <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu Đối tượng là 3 thì điểm của Đối
+                  tượng = 1 <br />
+                  - Tổng điểm sẽ được tính theo công thức: <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;tongDiem = điểm môn 1 + điểm môn 2 +
+                  điểm môn 3 + điểm Khu vực + điểm Đối tượng <br />
+                  - Nếu 1 trong 3 điểm của môn học là 0 thì sẽ rớt <br />
+                  - Nếu Tổng điểm < Điểm chuẩn thì sẽ rớt <br />
+                  - Nếu Tổng điểm > Điểm chuẩn thì sẽ đậu <br />
+                  <br />
+                  Đầu ra: <br />
+                  - Thông báo kết quả đậu hay rớt và tổng điểm <br />
+                </p>
+              </div>
+              <div class="row mb-4">
+                <div class="col-md-4 mb-3">
+                  <input
+                    id="diemChuan"
+                    type="number"
+                    class="form-control"
+                    placeholder="Nhập điểm chuẩn"
+                  />
+                </div>
+                <div class="col-md-4">
+                  <select class="form-control" name="khuvuc" id="khuVuc">
+                    <option value="X">Chọn khu vực</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <select class="form-control" name="doituong" id="doiTuong">
+                    <option value="0">Chọn đối tượng</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <input
+                    id="diem1"
+                    type="number"
+                    class="form-control"
+                    placeholder="Nhập điểm môn thứ 1"
+                  />
+                </div>
+                <div class="col-md-4 mb-3">
+                  <input
+                    id="diem2"
+                    type="number"
+                    class="form-control"
+                    placeholder="Nhập điểm môn thứ 2"
+                  />
+                </div>
+                <div class="col-md-4 mb-3">
+                  <input
+                    id="diem3"
+                    type="number"
+                    class="form-control"
+                    placeholder="Nhập điểm môn thứ 3"
+                  />
+                </div>
+              </div>
+              <div class="result-form">
+                <button class="btn btn-success" id="kq_Bai1">Kết quả</button>
+                <div class="alert alert-success mt-2" id="KQ1"></div>
+              </div>
+            </div>
+            <div class="tab-pane container fade" id="bai2">
+              <h1>Tính tiền điện</h1>
+              <div class="note">
+                <p>
+                  Đầu vào: <br />
+                  - Họ tên và Số điện <br />
+                  <br />
+                  Xử lý: <br />
+                  - Tạo biến hoTen và soDien và gán Họ tên và Số điện vào biến
+                  <br />
+                  - Tạo biến soTien <br />
+                  - Nếu Số điện < 0 => Nhập sai số điện <br />
+                  - Số tiền điện sẽ được tính theo công thức: <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu Số điện <= 50 : tienDien = soDien
+                  * 500; <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu 50 < Số điện <= 100 : tienDien =
+                  tienDien = (50 * 500) + (soDien - 50) * 650 <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu 100 < Số điện <= 200 : tienDien =
+                  (50 * 500) + (50 * 650) + ((soDien - 100) * 850) <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu 200 < Số điện <= 350 : tienDien =
+                  (50 * 500) + (50 * 650) + (100 * 850) + ((soDien - 200) *
+                  1100) <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu Số điện > 350 : tienDien = (50 *
+                  500) + (50 * 650) + (100 * 850) + (150 * 1100) + ((soDien -
+                  350) * 1300) <br />
+                  <br />
+                  Đầu ra:<br />
+                  - Họ tên và Số tiền điện<br />
+                </p>
+              </div>
+              <div class="row mb-4">
+                <div class="col-md-4">
+                  <input
+                    id="hoTen"
+                    type="text"
+                    class="form-control"
+                    placeholder="Nhập họ tên"
+                  />
+                </div>
+                <div class="col-md-4">
+                  <input
+                    id="soDien"
+                    type="number"
+                    class="form-control"
+                    placeholder="Nhập số kw điện"
+                  />
+                </div>
+              </div>
+              <div class="result-form">
+                <button class="btn btn-success" id="kq_Bai2">
+                  Tính tiền điện
+                </button>
+                <div class="alert alert-success mt-2" id="KQ2"></div>
+              </div>
+            </div>
+            <div class="tab-pane container fade" id="bai3">
+              <h1>Tính thuế thu nhập cá nhân</h1>
+              <div class="note">
+                <p>
+                  Đầu vào: <br />
+                  - Họ tên, Thu nhập năm, Người phụ thuộc <br />
+                  <br />
+                  Xử lý:<br />
+                  - Tạo biến và gán từng giá trị đầu vào vào từng biến <br />
+                  - tạo biến chiuThue và thue <br />
+                  - Thu nhập chịu thuế (chiuThue) sẽ được tính theo công thức:
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;chiuThue = thuNhapNam - 4 triệu -
+                  nguoiPhuThuoc * 1.6 triệu
+                  <br />
+                  - Thuế thu nhập cá nhân (thue) sẽ được tính theo công thức:
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu chiuThue <= 60 triệu : thue =
+                  chiuThue * 0.05 <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu 60 triệu < chiuThue <= 120 triệu :
+                  thue = chiuThue * 0.1 <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu 120 triệu < chiuThue <= 210 triệu
+                  : thue = chiuThue * 0.15 <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu 210 triệu < chiuThue <= 384 triệu
+                  : thue = chiuthue * 0.2 <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu 384 triệu < chiuThue <= 624 triệu
+                  : thue = chiuThue * 0.25 <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu 624 triệu < chiuThue <= 960 triệu
+                  : thue = chiuThue * 0.3 <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu chiuThue > 960 : thue = chiuThue *
+                  0.35 <br />
+                  <br />
+                  Đầu ra: <br />
+                  - Họ tên và tiền thuế thu nhập cá nhân <br />
+                </p>
+              </div>
+              <div class="row mb-4">
+                <div class="col-md-4">
+                  <input
+                    id="hoTenCaNhan"
+                    type="text"
+                    class="form-control"
+                    placeholder="Nhập họ tên"
+                  />
+                </div>
+                <div class="col-md-4">
+                  <input
+                    id="thuNhapNam"
+                    type="number"
+                    class="form-control"
+                    placeholder="Tổng thu nhập năm"
+                  />
+                </div>
+                <div class="col-md-4">
+                  <input
+                    id="nguoiPhuThuoc"
+                    type="number"
+                    class="form-control"
+                    placeholder="Số người phụ thuộc"
+                  />
+                </div>
+              </div>
+              <div class="result-form">
+                <button class="btn btn-success" id="kq_Bai3">Kết quả</button>
+                <div class="alert alert-success mt-2" id="KQ3"></div>
+              </div>
+            </div>
+            <div class="tab-pane container fade" id="bai4">
+              <h1>Tính tiền cáp</h1>
+              <div class="note">
+                <p>
+                  Đầu vào: <br />
+                  - Loại Khách hàng, Mã Khách hàng, Số kênh, Số kết nối<br />
+                  <br />
+                  Xử lý: <br />
+                  - Tạo biến và gán từng biến cho Loại Khách hàng, Mã Khách
+                  hàng, Số kênh và Số kết nối <br />
+                  - Tiền cáp sẽ được tính theo công thức: <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu Loại Khách hàng là Người dân :
+                  Tiền Cáp = 4.5 + 20.5 + 7.5 * Số kênh <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Nếu Loại Khách hàng là Doanh nghiệp :
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Nếu Số kết
+                  nối <= 10 : Tiền cáp = 15 + 75 + 50 * Số kênh <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Nếu Số kết
+                  nối > 10 : Tiền cáp = 15 + (75 + (Số kết nối - 75) * 5) + 50 *
+                  Số kênh <br />
+                  <br />
+                  Đầu ra: <br />
+                  - Mã khách hàng và Số tiền cáp <br />
+                </p>
+              </div>
+              <div class="row mb-4">
+                <div class="col-md-4 mb-3">
+                  <select class="form-control" name="loaikhachhang" id="loaiKH">
+                    <option value="">Chọn loại khách hàng</option>
+                    <option value="nn">Người dân</option>
+                    <option value="dn">Doanh nghiệp</option>
+                  </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <input
+                    id="maKH"
+                    type="text"
+                    class="form-control"
+                    placeholder="Nhập mã khách hàng"
+                  />
+                </div>
+                <div class="col-md-4 mb-3">
+                  <input
+                    id="soKenh"
+                    type="number"
+                    class="form-control"
+                    placeholder="Nhập số kênh cao cấp"
+                  />
+                </div>
+                <div class="col-md-4 mb-3">
+                  <input
+                    id="soKetNoi"
+                    type="number"
+                    class="form-control"
+                    placeholder="Nhập số kết nối"
+                  />
+                </div>
+              </div>
+              <div class="result-form">
+                <button class="btn btn-success" id="kq_Bai4">Kết quả</button>
+                <div class="alert alert-success mt-2" id="KQ4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+*{
+    font-size: 16px;
+   
+}
+body{
+    margin: 3rem 0;
+}
+
+.container .row h1 {
+    font-weight: 700;
+}
+.container .row .nav{
+    flex-direction: column;
+}
+.container .row .col-md-2 {
+    background-color: rgb(247, 221, 187);
+    padding: 0;
+}
+
+.container .row .col-md-10{
+    background-image: url(../img/1.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.container .row .col-md-10 .tab-pane .note{
+    background-color:#fff;
+    padding: 2rem;
+    margin: 2rem 0;
+    border-left: 0.5rem solid rgb(17, 178, 206);
+}
+.container .row .col-md-10 .result-form .rsText{
+    background-color: #fff;
+    padding: 1rem;
+    margin: 2rem 0;
+    border-left: 0.5rem solid rgb(17, 178, 206);
+    
+}
